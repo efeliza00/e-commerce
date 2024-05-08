@@ -2,14 +2,9 @@
 import React from 'react'
 import { Button } from './ui/button'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
-import { useQuery } from '@tanstack/react-query'
-import { getCart } from '@/api/products'
-
 
 const Cart = () => {
-    const { data } = useQuery({ queryKey: ["my-cart"], queryFn: getCart })
 
-    console.log(data)
     return (
         <div>
             <Sheet>
