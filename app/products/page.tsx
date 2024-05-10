@@ -24,7 +24,7 @@ const FilterProducts = () => {
         <Controller
             control={control}
             name="category"
-            render={({ field: { onChange } }) => (<ToggleGroup defaultValue="products" type="single" onValueChange={onChange} >
+            render={({ field: { onChange } }) => (<ToggleGroup defaultValue="products" type="single" onValueChange={onChange} className="grid grid-cols-3 lg:grid-cols-6 justify-center " >
                 <ToggleGroupItem variant="outline" value="products" aria-label="Toggle bold" className="capitalize hover:bg-yellow-200/90 data-[state=on]:bg-yellow-300">
                     All Products
                 </ToggleGroupItem>
@@ -46,17 +46,23 @@ const FilterProducts = () => {
                     control={control}
                     name="sort"
                     render={({ field: { onChange } }) => <Select onValueChange={onChange}>
-                        <SelectTrigger className="w-[10rem]">
+                        <SelectTrigger className="w-full">
                             <SelectValue placeholder="Sort" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectGroup>
                                 <SelectLabel>Sort</SelectLabel>
                                 <SelectItem value="asc">
-                                    <i className="fi fi-rr-arrow-small-up mr-2"></i>High to Low
+                                    <i className="fi fi-rr-arrow-small-up mr-2"></i>
+                                    <span>
+                                        High to Low
+                                    </span>
                                 </SelectItem>
                                 <SelectItem value="desc">
-                                    <i className="fi fi-rr-arrow-small-down mr-2"></i>Low to High
+                                    <i className="fi fi-rr-arrow-small-down mr-2"></i>
+                                    <span>
+                                        Low to High
+                                    </span>
                                 </SelectItem>
                             </SelectGroup>
                         </SelectContent>
@@ -82,7 +88,7 @@ const ProductsList = () => {
 
     return <div className="col-span-12 px-6 ">
         <FilterProducts />
-        <ul className='grid grid-cols-4 gap-2 mt-4'>
+        <ul className='grid grid-cols-1 lg:grid-cols-4 gap-2 mt-4'>
             {!isPending ? products?.map(product =>
                 <Link href={`/products/item/${product.id}`} key={product.id} scroll={false} >
                     <li>

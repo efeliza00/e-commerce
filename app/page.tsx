@@ -29,12 +29,12 @@ export const ContextProducts = createContext<Product[]>([])
 
 
 const ChooseUsSection = () => {
-  return <div className="w-full px-4 lg:py-24 grid grid-cols-12 ">
+  return <div className="w-full px-4 lg:py-24 grid grid-cols-12 mt-4 lg:mt-0">
     <div className="col-span-12" >
       <h2 className="text-center scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
         Why Choose Us?
       </h2>
-      <div className="grid gap-2 grid-cols-4 grid-flow-row mt-4 ">
+      <div className="grid gap-2 grid-cols-1 lg:grid-cols-4 grid-flow-row mt-4 ">
         {aboutUs.map(about => (<Card className="col-span-1 hover:bg-slate-100/100 dark:bg-slate-900 dark:hover:bg-slate-800/100 group cursor-default drop-shadow-none duration-300" key={about.id}>
           <CardHeader className="h-auto w-full ">
             <div className="h-10 w-10 relative rounded-full group-hover:scale-110 duration-300">
@@ -56,7 +56,7 @@ const ChooseUsSection = () => {
 const SampleProductsSection = () => {
   const products = useContext(ContextProducts) as Product[]
 
-  return (<div className="px-6 lg:py-24 grid grid-cols-12 gap-2 bg-white dark:bg-zinc-900 border-y">
+  return (<div className="px-6 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-2 bg-white dark:bg-zinc-900 border-y">
     <div className="col-span-3 flex flex-col items-center justify-center ">
       <h2 className="scroll-m-20 border-b pb-2 text-3xl  text-yellow-300 font-semibold tracking-wider first:mt-0">
         Unlock Style and Innovation

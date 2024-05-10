@@ -12,23 +12,17 @@ import { usePathname } from "next/navigation"
 const MobileNavbar = ({ isOpenNavbar }: { isOpenNavbar: boolean }) => {
     const pathname = usePathname()
 
-    console.log(pathname)
-
-    return <div className={`fixed w-full h-full -inset-2 z-40 bg-slate-100 dark:bg-slate-900 overflow-hidden md:hidden p-4 transition-transform duration-500 ${classnames({ "-translate-x-full pointer-events-none": !isOpenNavbar, "translate-x-0": isOpenNavbar })}`}>
-        <div className="flex items-center justify-between">
-            <div className="md:hidden">
-                <DarkModeToggle />
-                <span className="sr-only">Toggle navigation menu</span>
-            </div>
+    return <div className={`fixed w-full h-full -inset-2 z-40 bg-slate-50 dark:bg-zinc-950 overflow-hidden md:hidden p-4 transition-transform duration-500 ${classnames({ "-translate-x-full pointer-events-none": !isOpenNavbar, "translate-x-0": isOpenNavbar })}`}>
+        <div className="md:hidden">
+            <DarkModeToggle />
+            <span className="sr-only">Toggle navigation menu</span>
         </div>
-        <div className="flex-1 grid w-full p-4 gap-1">
-            <Link className="text-primary font-bold" href="/" >
-                <span className="tracking-wide inline-block relative duration-300 hover:text-primary after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-[0.25s] transition-colors after:ease-[ease-out] after:scale-x-0 after:left-0 after:bottom-0 hover:after:origin-bottom-left hover:after:scale-x-100 py-4">Home</span>
-            </Link>
+        <ul className="flex-1 grid w-full px-6 py-4 font-semibold text-2xl gap-10">
+            <Link href="/"><span className={`${pathname === "/" && 'text-yellow-500'} tracking-wide inline-block relative duration-300 hover:text-primary after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-[0.25s] after:ease-[ease-out] after:scale-x-0 after:left-0 after:bottom-0 hover:after:origin-bottom-left hover:after:scale-x-100`}>Home</span></Link>
             <Link href="/products"><span className={`${pathname === "/products" && 'text-yellow-500'} tracking-wide inline-block relative duration-300 hover:text-primary after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-[0.25s] after:ease-[ease-out] after:scale-x-0 after:left-0 after:bottom-0 hover:after:origin-bottom-left hover:after:scale-x-100`}>Products</span></Link>
             <Link href="/about"><span className={`${pathname === "/about" && 'text-yellow-500'} tracking-wide inline-block relative duration-300 hover:text-primary after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-[0.25s] after:ease-[ease-out] after:scale-x-0 after:left-0 after:bottom-0 hover:after:origin-bottom-left hover:after:scale-x-100`}>About Us</span></Link>
             <Link href="/contact"><span className={`${pathname === "/contact" && 'text-yellow-500'} tracking-wide inline-block relative duration-300 hover:text-primary after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-[0.25s] after:ease-[ease-out] after:scale-x-0 after:left-0 after:bottom-0 hover:after:origin-bottom-left hover:after:scale-x-100`}>Contact Us</span></Link>
-        </div>
+        </ul>
     </div>
 }
 
