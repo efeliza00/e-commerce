@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import GuestAccount from "@/components/demo-account";
+import DemoAccount from "@/components/demo-account";
 
 
 type LoginFormData = {
@@ -44,8 +46,9 @@ const LoginForm = () => {
 
     return (<Card className="max-w-sm">
         <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold">Login</CardTitle>
+            <CardTitle className="text-4xl font-bold text-center tracking-tight uppercase mb-5">Login</CardTitle>
             <CardDescription>Enter your email and password to access your account.</CardDescription>
+            <CardDescription>Note: Please use this Demo Account. <DemoAccount /></CardDescription>
         </CardHeader>
         <CardContent>
             <div className="space-y-4">
@@ -62,7 +65,10 @@ const LoginForm = () => {
                 <Button className="w-full" type="submit">
                     Login
                 </Button>
+
             </div>
+
+
         </CardContent>
     </Card>)
 }
