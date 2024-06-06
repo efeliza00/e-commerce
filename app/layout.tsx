@@ -15,6 +15,9 @@ export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Mobo Market",
   description: "Built and Design by Evan.",
+  icons: {
+    icon: "/e-commerce-logo.png"
+  }
 };
 
 
