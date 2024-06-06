@@ -9,7 +9,6 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Rating } from 'react-simple-star-rating'
 import { Button } from '@/components/ui/button'
 import { FormProvider, useForm, useFormContext } from 'react-hook-form'
-import { Toaster } from '@/components/ui/toaster'
 import { useToast } from '@/components/ui/use-toast'
 
 type ProductModalForm = {
@@ -131,13 +130,13 @@ const ProductModal = () => {
                     }
                 }}
             >
-                <DialogContent className='max-h-[60rem]' showCloseButton='show'>
+                <DialogContent className='max-w-96 max-h-[60rem]' showCloseButton='show'>
                     <form onSubmit={handleSubmit(onSubmitToCart)}>
-                        <div className="grid grid-cols-2" >
-                            <div className='my-auto w-2/3' >
-                                <Image className='max-h-96 h-auto min-w-56' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
+                        <div className="grid grid-cols-4 gap-10" >
+                            <div className='col-span-4 lg:col-span-2 mx-auto w-2/3' >
+                                <Image className='max-h-96 h-auto mx-auto' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
                             </div>
-                            <div className="px-4 max-h-full w-full">
+                            <div className="px-4 max-h-full w-full col-span-4 lg:col-span-2">
                                 <h3 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
                                     {product.title}
                                 </h3>

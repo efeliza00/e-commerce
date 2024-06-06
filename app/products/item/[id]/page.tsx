@@ -117,12 +117,12 @@ const ProductItem = () => {
     }, [data])
 
     return (
-        <div className='w-full h-full px-6 py-4'>
+        <div className='w-full min-h-full px-6 py-4'>
             <div className='grid grid-cols-12 h-full my-auto gap-4'>
-                <div className="col-span-5 m-auto">
+                <div className="col-span-12 lg:col-span-5 m-auto">
                     <Image className='max-h-96 h-auto w-5/6 max-w-5/6' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
                 </div>
-                <div className="col-span-7 m-auto w-full">
+                <div className="col-span-12 lg:col-span-7 m-auto w-full">
                     <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
                         {product?.title}
                     </h2>
@@ -139,11 +139,11 @@ const ProductItem = () => {
                     <p className="leading-6 text-sm [&:not(:first-child)]:mt-3">
                         {product?.description}
                     </p>
-                    <div className='grid grid-cols-12 mt-4 border-t pt-4'>
-                        <div className='col-span-4'>
+                    <div className='grid grid-cols-12 gap-5 lg:gap-0 mt-4 border-t pt-4'>
+                        <div className='col-span-12 lg:col-span-4'>
                             <QuantityCounterInput />
                         </div>
-                        <div className='col-span-8'>
+                        <div className='col-span-12 lg:col-span-8'>
                             <Button className='mx-auto w-full text-white hover:bg-yellow-500/60 duration-300 group'>
                                 Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i>
                             </Button>

@@ -1,4 +1,3 @@
-
 import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
 import React from 'react'
@@ -9,7 +8,7 @@ const ProductsLayout = ({ children, product }: {
 
 }) => {
     return (
-        <div className="px-0 relative h-screen max-h-screen container">
+        <div className="px-0 relative h-screen min-h-screen container">
             <Navbar />
             {children}
             {product}

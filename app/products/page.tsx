@@ -7,9 +7,7 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import React, { Suspense, useEffect } from 'react'
 import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { register } from 'module'
 
 type FilterProductsForm = {
     category: string;
@@ -52,13 +50,13 @@ const FilterProducts = () => {
                         <SelectContent>
                             <SelectGroup>
                                 <SelectLabel>Sort</SelectLabel>
-                                <SelectItem value="asc">
+                                <SelectItem value="desc">
                                     <i className="fi fi-rr-arrow-small-up mr-2"></i>
                                     <span>
                                         High to Low
                                     </span>
                                 </SelectItem>
-                                <SelectItem value="desc">
+                                <SelectItem value="asc">
                                     <i className="fi fi-rr-arrow-small-down mr-2"></i>
                                     <span>
                                         Low to High
@@ -88,7 +86,7 @@ const ProductsList = () => {
 
     return <div className="col-span-12 px-6 ">
         <FilterProducts />
-        <ul className='grid grid-cols-1 lg:grid-cols-4 gap-2 mt-4'>
+        <ul className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4 py-10 lg:py-0'>
             {!isPending ? products?.map(product =>
                 <Link href={`/products/item/${product.id}`} key={product.id} scroll={false} >
                     <li>
