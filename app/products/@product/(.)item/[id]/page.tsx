@@ -130,7 +130,7 @@ const ProductModal = () => {
                     }
                 }}
             >
-                <DialogContent className='max-w-96 max-h-[60rem]' showCloseButton='show'>
+                <DialogContent className='max-w-96 lg:max-w-full max-h-[60rem]' showCloseButton='show'>
                     <form onSubmit={handleSubmit(onSubmitToCart)}>
                         <div className="grid grid-cols-4 gap-10" >
                             <div className='col-span-4 lg:col-span-2 mx-auto w-2/3' >
