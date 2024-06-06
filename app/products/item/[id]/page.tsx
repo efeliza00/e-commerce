@@ -65,7 +65,6 @@ const useProductForm = () => {
                     description: "An item has been added to cart please. Check your cart for checkout.",
                 })
             },
-
             onError: (context) => {
                 toast({
                     variant: "default",
@@ -78,7 +77,7 @@ const useProductForm = () => {
 
     return {
         methods,
-        onSubmitToCart
+        handleSubmit: methods.handleSubmit(onSubmitToCart)
     }
 }
 
@@ -109,6 +108,9 @@ const QuantityCounterInput = () => {
 }
 const ProductItem = () => {
     const { data } = useProduct()
+    const { watch } = useFormContext<ProductForm>()
+
+    const quantity = watch('quantity')
 
     const product = useMemo(() => {
         if (data) {
@@ -117,7 +119,7 @@ const ProductItem = () => {
     }, [data])
 
     return (
-        <div className='w-full min-h-full px-6 py-4'>
+        <div className='my-auto px-6 py-4'>
             <div className='grid grid-cols-12 h-full my-auto gap-4'>
                 <div className="col-span-12 lg:col-span-5 m-auto">
                     <Image className='max-h-96 h-auto w-5/6 max-w-5/6' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
@@ -144,7 +146,7 @@ const ProductItem = () => {
                             <QuantityCounterInput />
                         </div>
                         <div className='col-span-12 lg:col-span-8'>
-                            <Button className='mx-auto w-full text-white hover:bg-yellow-500/60 duration-300 group'>
+                            <Button disabled={quantity === 0} type="submit" className='mx-auto w-full text-white hover:bg-yellow-500/60 duration-300 group'>
                                 Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i>
                             </Button>
                         </div>
@@ -156,10 +158,12 @@ const ProductItem = () => {
 }
 
 const ProductItemDetails = () => {
-    const { methods } = useProductForm()
+    const { methods, handleSubmit } = useProductForm()
 
     return <FormProvider {...methods}>
-        <ProductItem />
+        <form onSubmit={handleSubmit} >
+            <ProductItem />
+        </form>
     </FormProvider>
 }
 

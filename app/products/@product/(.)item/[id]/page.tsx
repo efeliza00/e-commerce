@@ -111,7 +111,7 @@ const ProductModal = () => {
     const router = useRouter()
     const { data } = useProductModal()
     const { onSubmitToCart } = useProductModalForm()
-    const { handleSubmit } = useFormContext<ProductModalForm>()
+    const { handleSubmit, watch } = useFormContext<ProductModalForm>()
 
 
     const product = useMemo(() => {
@@ -119,6 +119,8 @@ const ProductModal = () => {
             return data
         }
     }, [data])
+
+    const quantity = watch('quantity')
 
 
     return (
@@ -133,7 +135,7 @@ const ProductModal = () => {
                 <DialogContent className='max-w-96 lg:max-w-full max-h-[60rem]' showCloseButton='show'>
                     <form onSubmit={handleSubmit(onSubmitToCart)}>
                         <div className="grid grid-cols-4 gap-10" >
-                            <div className='col-span-4 lg:col-span-2 mx-auto w-2/3' >
+                            <div className='col-span-4 lg:col-span-2 m-auto w-2/3' >
                                 <Image className='max-h-96 h-auto mx-auto' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
                             </div>
                             <div className="px-4 max-h-full w-full col-span-4 lg:col-span-2">
@@ -156,7 +158,7 @@ const ProductModal = () => {
                                 <div className="mt-2">
                                     <QuantityCounterInput />
                                 </div>
-                                <Button type="submit" size="lg" className='mt-4 w-full text-white hover:bg-yellow-500/60 duration-300 group'>
+                                <Button disabled={quantity === 0} type="submit" size="lg" className='mt-4 w-full text-white hover:bg-yellow-500/60 duration-300 group'>
                                     Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i>
                                 </Button>
                             </div>
