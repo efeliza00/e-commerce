@@ -1,5 +1,5 @@
 "use client"
-import { Card, CardDescription, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { FormProvider, SubmitHandler, useForm, useFormContext } from "react-hook-form"
 import { submitSignInForm } from "./actions";
 import { Input } from "@/components/ui/input";
@@ -62,14 +62,13 @@ const LoginForm = () => {
                     </div>
                     <Input {...register('password')} type="password" />
                 </div>
-                <Button className="w-full" type="submit">
-                    Login
-                </Button>
-
             </div>
-
-
         </CardContent>
+        <CardFooter>
+            <Button className="w-full" type="submit" >
+                Login
+            </Button>
+        </CardFooter>
     </Card>)
 }
 const LoginDetails = () => {
