@@ -9,10 +9,8 @@ const ProductsLayout = ({ children, product }: {
 }) => {
     return (
         <div className="px-0 relative h-screen min-h-screen container">
-            <Navbar />
             {children}
             {product}
-            <Footer />
         </div>
     )
 }

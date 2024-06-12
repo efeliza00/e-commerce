@@ -122,7 +122,7 @@ const ProductItem = () => {
         <div className='my-auto px-6 py-4'>
             <div className='grid grid-cols-12 h-full my-auto gap-4'>
                 <div className="col-span-12 lg:col-span-5 m-auto">
-                    <Image className='max-h-96 h-auto w-5/6 max-w-5/6' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
+                    <Image className='max-h-96 h-auto w-full' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
                 </div>
                 <div className="col-span-12 lg:col-span-7 m-auto w-full">
                     <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">

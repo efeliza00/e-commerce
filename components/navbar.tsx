@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import DarkModeToggle from "./darkmode-toggle"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import classnames from "classnames"
 import Cart from "./cart"
 import Profile from "./profile"
@@ -29,6 +29,10 @@ const MobileNavbar = ({ isOpenNavbar }: { isOpenNavbar: boolean }) => {
 export default function Navbar() {
     const [isOpenNavbar, setIsOpenNavbar] = useState<boolean>(false)
     const pathname = usePathname()
+
+    useEffect(() => {
+        setIsOpenNavbar(false)
+    }, [pathname])
 
     return (
         <header className="flex items-center h-14 px-4 border-b lg:h-20 md:px-6 space-x-2 justify-between">
@@ -60,4 +64,5 @@ export default function Navbar() {
         </header>
     )
 }
+
 
