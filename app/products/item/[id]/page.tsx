@@ -106,11 +106,30 @@ const QuantityCounterInput = () => {
         </>
     )
 }
-const ProductItem = () => {
-    const { data } = useProduct()
+
+const ProductAddToCart = () => {
+    const { handleSubmit } = useProductForm()
     const { watch } = useFormContext<ProductForm>()
 
     const quantity = watch('quantity')
+    return (
+        <form onSubmit={handleSubmit} >
+            <div className='grid grid-cols-12 gap-5 lg:gap-0 mt-4 border-t pt-4'>
+                <div className='col-span-12 lg:col-span-4'>
+                    <QuantityCounterInput />
+                </div>
+                <div className='col-span-12 lg:col-span-8'>
+                    <Button disabled={quantity === 0} type="submit" className='mx-auto w-full text-white hover:bg-yellow-500/60 duration-300 group'>
+                        Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i>
+                    </Button>
+                </div>
+            </div>
+        </form>
+    )
+}
+
+const ProductItem = () => {
+    const { data } = useProduct()
 
     const product = useMemo(() => {
         if (data) {
@@ -119,51 +138,38 @@ const ProductItem = () => {
     }, [data])
 
     return (
-        <div className='my-auto px-6 py-4'>
-            <div className='grid grid-cols-12 h-full my-auto gap-4'>
-                <div className="col-span-12 lg:col-span-5 m-auto">
-                    <Image className='max-h-96 h-auto w-full' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
-                </div>
-                <div className="col-span-12 lg:col-span-7 m-auto w-full">
-                    <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                        {product?.title}
-                    </h2>
-                    <h2 className="scroll-m-20 mt-2 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                        $ {product?.price}
-                    </h2>
-                    <Rating size={20} readonly initialValue={Number(product?.rating?.rate)} allowFraction tooltipDefaultText={product?.rating?.rate} />
-                    <span className="mt-1">
-                        {`(${product?.rating?.count})`}
-                    </span>
-                    <p className="text-muted-foreground scroll-m-20 text-lg font-semibold tracking-tight">
-                        Description
-                    </p>
-                    <p className="leading-6 text-sm [&:not(:first-child)]:mt-3">
-                        {product?.description}
-                    </p>
-                    <div className='grid grid-cols-12 gap-5 lg:gap-0 mt-4 border-t pt-4'>
-                        <div className='col-span-12 lg:col-span-4'>
-                            <QuantityCounterInput />
-                        </div>
-                        <div className='col-span-12 lg:col-span-8'>
-                            <Button disabled={quantity === 0} type="submit" className='mx-auto w-full text-white hover:bg-yellow-500/60 duration-300 group'>
-                                Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i>
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+        <div className='grid grid-cols-12 gap-4 px-6 py-4'>
+            <div className="col-span-12 lg:col-span-5 m-auto">
+                <Image className='max-h-96 h-auto w-full' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
+            </div>
+            <div className="col-span-12 lg:col-span-7 m-auto w-full">
+                <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                    {product?.title}
+                </h2>
+                <h2 className="scroll-m-20 mt-2 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                    $ {product?.price}
+                </h2>
+                <Rating size={20} readonly initialValue={Number(product?.rating?.rate)} allowFraction tooltipDefaultText={product?.rating?.rate} />
+                <span className="mt-1">
+                    {`(${product?.rating?.count})`}
+                </span>
+                <p className="text-muted-foreground scroll-m-20 text-lg font-semibold tracking-tight">
+                    Description
+                </p>
+                <p className="leading-6 text-sm [&:not(:first-child)]:mt-3">
+                    {product?.description}
+                </p>
+                <ProductAddToCart />
             </div>
         </div>
     )
 }
 
 const ProductItemDetails = () => {
-    const { methods, handleSubmit } = useProductForm()
+    const { methods } = useProductForm()
 
     return <FormProvider {...methods}>
-        <form onSubmit={handleSubmit} >
-            <ProductItem />
-        </form>
+        <ProductItem />
     </FormProvider>
 }
 

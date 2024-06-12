@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
-import Footer from "@/components/footer";
 import HeroCards from "@/components/hero-cards";
 
 type Product = {

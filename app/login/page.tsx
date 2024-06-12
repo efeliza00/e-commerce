@@ -44,7 +44,7 @@ const useLoginForm = () => {
 const LoginForm = () => {
     const { register } = useFormContext<LoginFormData>()
 
-    return (<Card className="max-w-sm">
+    return (<Card className="max-w-md">
         <CardHeader className="space-y-1">
             <CardTitle className="text-4xl font-bold text-center tracking-tight uppercase mb-5">Login</CardTitle>
             <CardDescription>Enter your email and password to access your account.</CardDescription>

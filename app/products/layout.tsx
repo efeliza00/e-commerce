@@ -8,10 +8,10 @@ const ProductsLayout = ({ children, product }: {
 
 }) => {
     return (
-        <div className="px-0 relative h-screen min-h-screen container">
+        <>
             {children}
             {product}
-        </div>
+        </>
     )
 }
 

@@ -39,11 +39,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Providers>
-            <Navbar />
-            <div className="container px-0 min-h-screen">
+            <div className="container px-0 min-h-screen h-screen">
+              <Navbar />
               {children}
+              <Footer />
             </div>
-            <Footer />
           </Providers>
         </ThemeProvider>
       </body>

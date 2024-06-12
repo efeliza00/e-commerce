@@ -6,7 +6,7 @@ const ItemLayout = ({ children, product }: {
 
 }) => {
     return (
-        <div className="px-0 relative h-screen max-h-screen container">
+        <div className='min-h-full'>
             {children}
             {product}
         </div>
