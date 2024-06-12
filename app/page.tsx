@@ -2,14 +2,13 @@
 import Image from "next/image";
 import { getHeroProducts } from "@/api/products";
 import { aboutUs } from "@/components/constants/about-us";
-import HeroCards from "@/components/hero-cards";
-import Navbar from "@/components/navbar";
 import ProductCard from "@/components/product-card";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createContext, useContext } from "react";
 import Footer from "@/components/footer";
+import HeroCards from "@/components/hero-cards";
 
 type Product = {
   category: string;
@@ -89,7 +88,6 @@ export default function Homepage() {
   return (
     <ContextProducts.Provider value={products}>
       <div className="h-full w-full">
-        <Navbar />
         <div className="grid grid-cols-12 h-[86%] px-6 py-6 lg:py-0 w-full">
           <div className="col-span-12 md:col-span-7 flex items-center justify-end h-full ">
             <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-6xl">
