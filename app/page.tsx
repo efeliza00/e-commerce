@@ -101,7 +101,6 @@ export default function Homepage() {
         </div>
         <SampleProductsSection />
         <ChooseUsSection />
-        <Footer />
       </div>
     </ContextProducts.Provider>
   );
