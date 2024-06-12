@@ -132,13 +132,13 @@ const ProductModal = () => {
                     }
                 }}
             >
-                <DialogContent className='max-w-96 lg:max-w-full max-h-[60rem]' showCloseButton='show'>
+                <DialogContent className='max-w-96 lg:max-w-full max-h-[50rem] lg:max-h-full overflow-auto' showCloseButton='show'>
                     <form onSubmit={handleSubmit(onSubmitToCart)}>
-                        <div className="grid grid-cols-4 gap-10" >
+                        <div className="grid grid-cols-4 gap-10  " >
                             <div className='col-span-4 lg:col-span-2 m-auto w-2/3' >
                                 <Image className='max-h-96 h-auto mx-auto' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
                             </div>
-                            <div className="px-4 max-h-full w-full col-span-4 lg:col-span-2">
+                            <div className="px-4 max-h-full w-full col-span-4 lg:col-span-2 ">
                                 <h3 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
                                     {product.title}
                                 </h3>
