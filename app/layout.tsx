@@ -39,7 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Providers>
-            <div className="container px-0 min-h-screen h-screen">
+            <div className="container px-0">
               <Navbar />
               {children}
               <Footer />
