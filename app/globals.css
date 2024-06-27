@@ -3,7 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-loader {
+  width: 90px;
+  aspect-ratio: 1;
+  --c: conic-gradient(from -90deg,#F40F0F 90deg,#0000 0);
+  background: var(--c), var(--c);
+  background-size: 40% 40%;
+  animation: b10 1.5s infinite;
+}
 
+@keyframes b10 {
+ 0%,
+ 20%  {background-position: 0 0           ,0            calc(100%/3)}
+ 33%  {background-position: 0 0           ,calc(100%/3) calc(100%/3)}
+ 66%  {background-position: 0 calc(100%/3),calc(100%/3) 0  }
+ 80%,
+ 100% {background-position: 0 calc(100%/3),0            0  }
+}
+@keyframes s8 {
+  100% {transform: rotate(1turn)}
+}
 
 @layer base {
     :root {

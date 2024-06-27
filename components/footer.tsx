@@ -2,9 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer
-            className="bg-slate-50 dark:bg-zinc-900 border-t text-center lg:text-left">
-
+        <footer className="bg-slate-50 dark:bg-zinc-900 border-t text-center lg:text-left">
             {/* <!-- Main container div: holds the entire content of the footer, including four sections (TW Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. --> */}
             <div className="mx-6 py-10 text-center md:text-left">
                 <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">

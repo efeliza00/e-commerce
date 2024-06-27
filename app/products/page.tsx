@@ -8,6 +8,7 @@ import { useQuery, useQueryClient, useSuspenseQuery } from '@tanstack/react-quer
 import React, { Suspense, useEffect } from 'react'
 import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-form'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select'
+import Loading from './item/[id]/loading'
 
 type FilterProductsForm = {
     category: string;
@@ -86,15 +87,15 @@ const ProductsList = () => {
 
     return <div className="col-span-12 px-6 ">
         <FilterProducts />
-        <ul className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4 py-10 lg:py-0'>
-            {!isPending ? products?.map(product =>
+        {!isPending ? <ul className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4 py-10 lg:py-0'>
+            {products?.map(product =>
                 <Link href={`/products/item/${product.id}`} key={product.id} scroll={false} >
                     <li>
                         <ProductCard isAddtoCartButton='hide' product={product} />
                     </li>
                 </Link>
-            ) : <div>loading..</div>}
-        </ul>
+            )}
+        </ul> : <Loading />}
     </div>
 }
 const useProductsList = () => {

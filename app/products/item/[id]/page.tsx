@@ -9,6 +9,7 @@ import { Rating } from 'react-simple-star-rating'
 import { Button } from '@/components/ui/button'
 import { FormProvider, useForm, useFormContext } from 'react-hook-form'
 import { useToast } from '@/components/ui/use-toast'
+import Loading from './loading'
 
 type ProductForm = {
     productId: number;
@@ -129,7 +130,7 @@ const ProductAddToCart = () => {
 }
 
 const ProductItem = () => {
-    const { data } = useProduct()
+    const { data, isFetching } = useProduct()
 
     const product = useMemo(() => {
         if (data) {
@@ -138,7 +139,7 @@ const ProductItem = () => {
     }, [data])
 
     return (
-        <div className='grid grid-cols-12 gap-4 px-6 py-4'>
+        <>{isFetching ? <Loading /> : <div className='grid grid-cols-12 gap-4 px-6 py-4'>
             <div className="col-span-12 lg:col-span-5 m-auto">
                 <Image className='max-h-96 h-auto w-full' src={product?.image as string} width={1920} height={1080} alt={`${product?.title}`} priority />
             </div>
@@ -161,7 +162,7 @@ const ProductItem = () => {
                 </p>
                 <ProductAddToCart />
             </div>
-        </div>
+        </div>}</>
     )
 }
 
