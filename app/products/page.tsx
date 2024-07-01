@@ -52,15 +52,15 @@ const FilterProducts = () => {
                             <SelectGroup>
                                 <SelectLabel>Sort</SelectLabel>
                                 <SelectItem value="desc">
-                                    <i className="fi fi-rr-arrow-small-up mr-2"></i>
-                                    <span>
-                                        High to Low
-                                    </span>
-                                </SelectItem>
-                                <SelectItem value="asc">
                                     <i className="fi fi-rr-arrow-small-down mr-2"></i>
                                     <span>
                                         Low to High
+                                    </span>
+                                </SelectItem>
+                                <SelectItem value="asc">
+                                    <i className="fi fi-rr-arrow-small-up mr-2"></i>
+                                    <span>
+                                        High to Low
                                     </span>
                                 </SelectItem>
                             </SelectGroup>

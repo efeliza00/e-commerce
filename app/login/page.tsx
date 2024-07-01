@@ -38,10 +38,12 @@ const useLoginForm = () => {
 
     return {
         methods,
+        submitMutation,
         handleSubmit: methods.handleSubmit(onSubmit),
     }
 }
 const LoginForm = () => {
+    const { submitMutation } = useLoginForm()
     const { register } = useFormContext<LoginFormData>()
 
     return (<Card className="max-w-md">
@@ -66,7 +68,7 @@ const LoginForm = () => {
         </CardContent>
         <CardFooter>
             <Button className="w-full" type="submit" >
-                Login
+                {submitMutation?.isPending ? <span className="spinner"></span> : "Login"}
             </Button>
         </CardFooter>
     </Card>)
