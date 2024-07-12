@@ -1,13 +1,12 @@
 "use client"
 import { Card, CardDescription, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { FormProvider, SubmitHandler, useForm, useFormContext } from "react-hook-form"
+import { FormProvider, useForm, useFormContext } from "react-hook-form"
 import { submitSignInForm } from "./actions";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import GuestAccount from "@/components/demo-account";
 import DemoAccount from "@/components/demo-account";
 
 
@@ -20,11 +19,11 @@ const useLoginForm = () => {
     const methods = useForm<LoginFormData>()
 
     const submitMutation = useMutation({
-        mutationFn: async (formData: LoginFormData) => {
-            await submitSignInForm(formData)
+        mutationFn: (formData: LoginFormData) => {
+            return submitSignInForm(formData)
         }
     });
-    const onSubmit = async (formData: LoginFormData) => {
+    const onSubmit = (formData: LoginFormData) => {
         submitMutation.mutate(formData, {
             onSuccess: () => {
                 methods.reset()
@@ -40,11 +39,14 @@ const useLoginForm = () => {
         methods,
         submitMutation,
         handleSubmit: methods.handleSubmit(onSubmit),
+        isPending: submitMutation.isPending
     }
 }
 const LoginForm = () => {
-    const { submitMutation } = useLoginForm()
+    const { submitMutation, isPending } = useLoginForm()
     const { register } = useFormContext<LoginFormData>()
+
+    console.log(submitMutation.isPending)
 
     return (<Card className="max-w-md">
         <CardHeader className="space-y-1">
@@ -68,7 +70,7 @@ const LoginForm = () => {
         </CardContent>
         <CardFooter>
             <Button className="w-full" type="submit" >
-                {submitMutation?.isPending ? <span className="spinner"></span> : "Login"}
+                {isPending ? <span className="spinner"></span> : "Login"}
             </Button>
         </CardFooter>
     </Card>)

@@ -79,7 +79,8 @@ const useProductModalForm = () => {
 
     return {
         methods,
-        onSubmitToCart
+        onSubmitToCart,
+        isPending: addToCartMutation.isPending
     }
 }
 
@@ -110,7 +111,7 @@ const QuantityCounterInput = () => {
 const ProductModal = () => {
     const router = useRouter()
     const { data } = useProductModal()
-    const { onSubmitToCart } = useProductModalForm()
+    const { onSubmitToCart, isPending } = useProductModalForm()
     const { handleSubmit, watch } = useFormContext<ProductModalForm>()
 
 
@@ -159,7 +160,7 @@ const ProductModal = () => {
                                     <QuantityCounterInput />
                                 </div>
                                 <Button disabled={quantity === 0} type="submit" size="lg" className='mt-4 w-full text-white hover:bg-yellow-500/60 duration-300 group'>
-                                    Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i>
+                                    {isPending ? <span className='spinner h-8 w-8'></span> : <span>Add to Cart <i className="ml-4 fi fi-rs-shopping-cart-add mt-1 group-hover:scale-[1.5] duration-300"></i></span>}
                                 </Button>
                             </div>
                         </div>

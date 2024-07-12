@@ -57,11 +57,6 @@ export const submitSignInForm =
           )
       }
     );
-
-    return {
-      isLoggedIn:
-        true
-    };
   };
 
 export const submitLogout =
