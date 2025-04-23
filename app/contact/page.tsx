@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import React from 'react'
 
 const ContactPage = () => {
     return (
@@ -9,7 +8,7 @@ const ContactPage = () => {
                 <h1 className="scroll-m-20 text-4xl text-center font-extrabold tracking-tight lg:text-5xl">
                     Contact <span className='text-yellow-300'>Me</span>
                 </h1>
-                <Link href={`mailto:felizavndrd567@gmail`} target="_blank" >
+          <Link href={`mailto:evanfeliza22@gmail.com`} target="_blank" >
                     <Button size="lg" className='mt-4'>
                         Send an Email <i className="ml-2 fi fi-rs-paper-plane mt-1"></i>
                     </Button>
